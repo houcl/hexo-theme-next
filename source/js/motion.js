@@ -1,6 +1,7 @@
 /* global NexT, CONFIG */
 
-$(document).ready(function() {
+$(document).on('ready', function() {
+
   NexT.motion = {};
 
   NexT.motion.integrator = {
@@ -181,5 +182,4 @@ $(document).ready(function() {
       integrator.next();
     }
   };
-
 });
