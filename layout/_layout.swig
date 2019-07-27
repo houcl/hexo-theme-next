@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 {# NexT version #}
 {% set version = next_env('version') %}
 
@@ -13,7 +12,6 @@
 {% if theme.motion.enable %}
   {% set html_class = html_class + ' use-motion' %}
 {% endif %}
-
 <html class="{{ html_class | lower }}" lang="{{ config.language }}">
 <head>
   {{ partial('_partials/head/head.swig', {}, {cache: theme.cache.enable}) }}
@@ -27,7 +25,6 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="{{ page.lang || page.language || config.language }}">
-
   {% set container_class = 'container' %}
   {% if theme.sidebar.position %}
     {% set container_class = container_class + ' sidebar-position-' + theme.sidebar.position %}
@@ -62,7 +59,13 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         {{ partial('_partials/footer.swig', {}, {cache: theme.cache.enable}) }}
+        {% if theme.pjax %}
+          <div class="reboot">
+        {% endif %}
         {% include '_third-party/analytics/analytics-with-widget.swig' %}
+        {% if theme.pjax %}
+          </div>
+        {% endif %}
         {% block footer %}{% endblock %}
       </div>
     </footer>
@@ -102,7 +105,7 @@
   {% include '_scripts/three.swig' %}
 
   {% if theme.pjax %}
-  <div id="reboot">
+    <div class="reboot">
   {% endif %}
   {% include '_third-party/index.swig' %}
 
@@ -110,26 +113,25 @@
     {{ partial(inject_item.layout, inject_item.locals, inject_item.options) }}
   {% endfor %}
   {% if theme.pjax %}
-  </div>
-  <script>
-  var pjax = new Pjax({
-    selectors: [
-      'title',
-      'meta[name=description]',
-      '#main'
-    ]
-  });
-  $(document).on('pjax:success', function() {
-    $('#reboot script').remove().appendTo('#reboot');
-    $(document).trigger('ready');
-    // Define Motion Sequence & Bootstrap Motion.
-    CONFIG.motion.enable && NexT.motion.integrator
-      .add(NexT.motion.middleWares.postList)
-      .add(NexT.motion.middleWares.sidebar)
-      .bootstrap();
-  });
-  </script>
+    </div>
+    <script>
+    var pjax = new Pjax({
+      selectors: [
+        'title',
+        'meta[name=description]',
+        '#main'
+      ]
+    });
+    $(document).on('pjax:success', function() {
+      $('#reboot script').remove().appendTo('#reboot');
+      $(document).trigger('ready');
+      // Define Motion Sequence & Bootstrap Motion.
+      CONFIG.motion.enable && NexT.motion.integrator
+        .add(NexT.motion.middleWares.postList)
+        .add(NexT.motion.middleWares.sidebar)
+        .bootstrap();
+    });
+    </script>
   {% endif %}
-
 </body>
 </html>
