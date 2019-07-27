@@ -212,7 +212,7 @@ avatar:
   # In theme directory (source/images): /images/avatar.gif
   # In site directory (source/uploads): /uploads/avatar.gif
   # You can also use other linking images.
-  url: /images/xurun.jpeg
+  url: https://first-class.oss-cn-beijing.aliyuncs.com/641564107655_.pic.jpg
   # If true, the avatar would be dispalyed in circle.
   rounded: true
   # If true, the avatar would be rotated with the cursor.
