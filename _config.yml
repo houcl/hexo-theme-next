@@ -9,15 +9,9 @@
 # Useful if you want to comment some options from NexT `_config.yml` by `next.yml` without editing default config.
 override: false
 
-# Console reminder if new version released.
-reminder: false
-
 # Allow to cache content generation. Introduced in NexT v6.0.0.
 cache:
   enable: true
-
-# Remove unnecessary files after hexo generate.
-minify: false
 
 # Define custom file paths.
 # Create your custom files in site directory `source/_data` and uncomment needed files below.
@@ -32,7 +26,6 @@ custom_file_path:
   #variable: source/_data/variables.styl
   #mixin: source/_data/mixins.styl
   #style: source/_data/styles.styl
-
 
 # ---------------------------------------------------------------
 # Site Information Settings
@@ -53,7 +46,7 @@ rss:
 
 footer:
   # Specify the date when the site was setup. If not defined, current year will be used.
-  #since: 2015
+  since: 2018
 
   # Icon between year and copyright info.
   icon:
@@ -70,15 +63,15 @@ footer:
 
   powered:
     # Hexo link (Powered by Hexo).
-    enable: true
+    enable: false
     # Version info of Hexo after Hexo link (vX.X.X).
-    version: true
+    version: false
 
   theme:
     # Theme & scheme info link (Theme - NexT.scheme).
-    enable: true
+    enable: false
     # Version info of NexT after scheme info (vX.X.X).
-    version: true
+    version: false
 
   # Beian ICP information for Chinese users. See: http://www.beian.miit.gov.cn
   beian:
@@ -152,9 +145,9 @@ baidu_push: false
 menu:
   home: / || home
   #about: /about/ || user
-  #tags: /tags/ || tags
   #categories: /categories/ || th
   archives: /archives/ || archive
+  tags: /tags/ || tags
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
@@ -170,11 +163,10 @@ menu_settings:
 # ---------------------------------------------------------------
 
 # Schemes
-scheme: Muse
+# scheme: Muse
 #scheme: Mist
-#scheme: Pisces
-#scheme: Gemini
-
+scheme: Pisces
+# scheme: Gemini
 
 # ---------------------------------------------------------------
 # Sidebar Settings
@@ -220,9 +212,9 @@ avatar:
   # In theme directory (source/images): /images/avatar.gif
   # In site directory (source/uploads): /uploads/avatar.gif
   # You can also use other linking images.
-  url: #/images/avatar.gif
+  url: /images/xurun.jpeg
   # If true, the avatar would be dispalyed in circle.
-  rounded: false
+  rounded: true
   # If true, the avatar would be rotated with the cursor.
   rotated: false
 
@@ -240,8 +232,8 @@ toc:
 
 sidebar:
   # Sidebar Position.
-  position: left
-  #position: right
+  # position: left
+  position: right
 
   # Manual define the sidebar width. If commented, will be default for:
   # Muse | Mist: 320
@@ -444,21 +436,17 @@ github_banner:
 
 
 # ---------------------------------------------------------------
-# Font Settings
-# See: https://theme-next.org/docs/theme-settings/#Fonts-Customization
-# ---------------------------------------------------------------
+# Font Settings. Introduced in NexT v5.0.1.
 # Find fonts on Google Fonts (https://www.google.com/fonts)
 # All fonts set here will have the following styles:
 #   light | light italic | normal | normal italic | bold | bold italic
 # Be aware that setting too much fonts will cause site running slowly
 # ---------------------------------------------------------------
-# To avoid space between header and sidebar in scheme Pisces / Gemini, Web Safe fonts are recommended for `global` (and `title`):
+# To avoid space between header and sidebar in scheme Pisces / Gemini, Web Safe fonts are recommended for `global` (and `logo`):
 # Arial | Tahoma | Helvetica | Times New Roman | Courier New | Verdana | Georgia | Palatino | Garamond | Comic Sans MS | Trebuchet MS
 # ---------------------------------------------------------------
 
 font:
-  # Use custom fonts families or not.
-  # Depended options: `external` and `family`.
   enable: false
 
   # Uri of fonts host, e.g. //fonts.googleapis.com (Default).
@@ -467,35 +455,39 @@ font:
   # Font options:
   # `external: true` will load this font family from `host` above.
   # `family: Times New Roman`. Without any quotes.
-  # `size: x.x`. Use `px` as unit. Default: 16
+  # `size: xx`. Use `px` as unit.
 
-  # Global font settings used for all elements inside <body>.
+  # Global font settings used for all elements in <body>.
   global:
     external: true
     family: Lato
     size:
 
-  # Font settings for site title (.site-title).
-  title:
-    external: true
-    family:
-    size:
-
-  # Font settings for headlines (<h1> to <h6>).
+  # Font settings for Headlines (H1, H2, H3, H4, H5, H6).
+  # Fallback to `global` font settings.
   headings:
     external: true
     family:
     size:
 
-  # Font settings for posts (.post-body).
+  # Font settings for posts.
+  # Fallback to `global` font settings.
   posts:
     external: true
     family:
+
+  # Font settings for Logo.
+  # Fallback to `global` font settings.
+  logo:
+    external: true
+    family:
+    size:
 
   # Font settings for <code> and code blocks.
   codes:
     external: true
     family:
+    size:
 
 
 # ---------------------------------------------------------------
@@ -840,7 +832,7 @@ algolia_search:
 # Local search
 # Dependencies: https://github.com/theme-next/hexo-generator-searchdb
 local_search:
-  enable: false
+  enable: true
   # If auto, trigger search by changing input.
   # If manual, trigger search by pressing enter key or search button.
   trigger: auto
@@ -848,8 +840,6 @@ local_search:
   top_n_per_article: 1
   # Unescape html strings to the readable one.
   unescape: false
-  # Preload the search data when the page loads.
-  preload: false
 
 # Swiftype Search API Key
 swiftype_key:
