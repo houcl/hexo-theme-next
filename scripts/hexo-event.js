@@ -4,7 +4,7 @@
 
 const merge = require('lodash/merge');
 
-hexo.on('generateBefore', function() {
+hexo.on('generateBefore', () => {
   if (hexo.locals.get) {
     var data = hexo.locals.get('data');
 
@@ -29,7 +29,7 @@ hexo.on('generateBefore', function() {
       var lang = this.config.language;
       var i18n = this.theme.i18n;
 
-      var mergeLang = function(lang) {
+      var mergeLang = lang => {
         i18n.set(lang, merge(i18n.get([lang]), data.languages[lang]));
       };
 
@@ -48,17 +48,17 @@ hexo.on('generateBefore', function() {
 
 });
 
-hexo.on('generateAfter', function() {
+hexo.on('generateAfter', () => {
   if (!hexo.theme.config.reminder) return;
   const https = require('https');
   const path = require('path');
   const env = require(path.normalize('../package.json'));
   https.get({
     hostname: 'api.github.com',
-    port: 443,
-    path: '/repos/theme-next/hexo-theme-next/releases/latest',
-    method: 'GET',
-    headers: {
+    port    : 443,
+    path    : '/repos/theme-next/hexo-theme-next/releases/latest',
+    method  : 'GET',
+    headers : {
       'User-Agent': 'Theme NexT Client'
     }
   }, res => {
