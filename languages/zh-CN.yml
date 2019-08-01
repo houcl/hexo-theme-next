@@ -1,13 +1,13 @@
 ---
 title:
   archive: 时光机
-  category: 分类
+  category: 分类专题
   tag: 标签
   schedule: 日程表
 menu:
   home: 首页
   archives: 时光机
-  categories: 分类
+  categories: 分类专题
   tags: 标签
   about: 关于
   search: 搜索
@@ -65,7 +65,7 @@ state:
   posts: 日志
   pages: 页面
   tags: 标签
-  categories: 分类
+  categories: 分类专题
 search:
   placeholder: 搜索...
 cheers:
